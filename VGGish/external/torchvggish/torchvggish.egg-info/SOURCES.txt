@@ -1,0 +1,11 @@
+LICENSE
+README.md
+setup.py
+torchvggish/mel_features.py
+torchvggish/vggish.py
+torchvggish/vggish_input.py
+torchvggish/vggish_params.py
+torchvggish.egg-info/PKG-INFO
+torchvggish.egg-info/SOURCES.txt
+torchvggish.egg-info/dependency_links.txt
+torchvggish.egg-info/top_level.txt
