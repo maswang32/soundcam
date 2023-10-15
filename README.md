@@ -12,9 +12,7 @@ NeurIPS Datasets and Benchmarks Poster 2023.
 
 ## Downloading our Dataset
 
-Simply go to the directory you would like to download the dataset in, and run
-
-./download.sh
+Simply go to the directory you would like to download the dataset in, and run `./download.sh`
 
 ## Loading the SoundCam Dataset
 
