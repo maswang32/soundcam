@@ -26,3 +26,13 @@ Here is an example to run binary detection using the pretrained VGGish with resa
 ```
 python train_vggish_class.py <path to audio> /../indices/labels_binary.npy --error_path <directory to save errors> --save_path <path to save model weights> --num_channels 10 --darkroom --num_categories 1 --pretrained --resample --train_indices  /../indices/train_indices_empty.npy --valid_indices /../indices/valid_indices_empty.npy --test_indices /../indices/test_indices_empty.npy --lr 0.0001 --empty_dir <path to audio from empty room>
 ```
+
+##Citation
+```
+@article{soundcam2023,
+  title={SoundCam: A Dataset for Finding Humans Using Room Acoustics},
+  author={Mason Wang and Samuel Clarke and Jui-Hsien Wang and Ruohan Gao and Jiajun Wu},
+  year={2023},
+  booktitle={NeurIPS Datasets and Benchmarks 2023},
+}
+```
