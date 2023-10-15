@@ -10,6 +10,14 @@ Code for running baseline experiments on the SoundCam Dataset.
 
 NeurIPS Datasets and Benchmarks Poster 2023.
 
+## Downloading our Dataset
+
+Simply go to the directory you would like to download the dataset in, and run
+
+./download.sh
+
+## Loading the SoundCam Dataset
+
 Here is an example command to run the VGGish baseline on the living room dataset, with all 10 microphones.
 
 ```
