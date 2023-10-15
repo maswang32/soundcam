@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 from pylab import rcParams
 
+DATASET_PATH = #Insert the path to the dataset's preprocessed folder here!
+
 
 class RoomSetup(object):
     def __init__(self,

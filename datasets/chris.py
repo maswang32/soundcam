@@ -2,6 +2,7 @@ import numpy as np
 import dataset
 import roomsetup
 
+DATASET_PATH = #Insert the path to the dataset's preprocessed folder here!
 
 #Microphone Locations
 mic_height = 50.3125
@@ -48,4 +49,4 @@ cr = dataset.Dataset(roomsetup.RoomSetup(speaker_xyz,
                 x_max,
                 y_min,
                 y_max,
-                walls), "/viscam/projects/soundcam/datasets/human_rgbd/May31Real/preprocessed")
+                walls), DATASET_PATH)

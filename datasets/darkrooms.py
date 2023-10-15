@@ -3,6 +3,10 @@ import numpy as np
 import dataset
 import roomsetup
 
+
+DATASET_PATH = #Insert the path to the dataset's preprocessed folder here!
+DATASET_PATH_OCCLUSIONS = #Insert the path to the Treated Room w/ occlusions preprocessed folder here!
+
 #Locations of Cone, Tweeter, Microphones, Centroid in mm
 speaker_bottom_left = np.array([-15.25, 4+15/16, 38.5])*25.4
 speaker_bottom_right = np.array([-10.75, 8+7/8, 38.5])*25.4
@@ -60,7 +64,7 @@ dr_occlusions = dataset.Dataset(roomsetup.RoomSetup(speaker_xyz,
                 x_max,
                 y_min,
                 y_max,
-                walls), "/viscam/projects/soundcam/datasets/human_rgbd/May5/preprocessed")
+                walls), DATASET_PATH_OCCLUSIONS)
 
 dr = dataset.Dataset(roomsetup.RoomSetup(speaker_xyz,
                 mic_xyzs_base,
@@ -68,4 +72,4 @@ dr = dataset.Dataset(roomsetup.RoomSetup(speaker_xyz,
                 x_max,
                 y_min,
                 y_max,
-                walls), "/viscam/projects/soundcam/datasets/human_rgbd/May18Real/preprocessed")
+                walls), DATASET_PATH")
