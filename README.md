@@ -1,4 +1,4 @@
-# SoundCam: A Dataset for Tasks in Tracking and Identifying Humans from Real Room Acoustics
+# SoundCam: A Dataset for Finding Humans Using Room Acoustics
 This repository provides code for running the baselines described in the SoundCam paper. Please check out our website, where the dataset is hosted: https://sites.google.com/view/soundcam
 
 Here is an example command to run the VGGish baseline on the living room dataset, with all 10 microphones.
