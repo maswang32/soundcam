@@ -107,7 +107,7 @@ class PoseKernelLifter(object):
         return np.array([self.hm_shape_0,self.hm_shape_1])*normalized
 
 
-    def inference(self, env_poses, centroid, plot=False, save=False, save_dir=None, alpha=3.5, mic_indices=None, success=True):
+    def inference(self, env_poses, centroid, plot=False, save=False, save_dir=None, alpha=3.5, mic_indices=None):
 
         if plot:
             #Making Graphs Bigger
@@ -172,25 +172,12 @@ class PoseKernelLifter(object):
                     plt.legend(bbox_to_anchor=(1.03, 1.0), loc='upper left',fontsize=16)
 
 
-                #if not save:
-                #    plt.show()
                 if save:
                     plt.savefig(os.path.join(save_dir, "{:04d}".format(i) + ".jpg"))
 
-                if success:
-                    plt.title("Success Case", fontsize=24)
-                    plt.savefig("PoseSuccess.pdf", bbox_inches='tight')
-                    plt.savefig("PoseSuccess.png", bbox_inches='tight')
-                else:
-                    plt.title("Failure Case", fontsize=24)
-                    plt.savefig("PoseFail.pdf", bbox_inches='tight')
-                    plt.savefig("PoseFail.png", bbox_inches='tight')
 
             print(i)
         
-        #spatial_returns = np.array(torch.stack(spatial_encodings))
-        #print("SHAPE OF SPATIAL ENCODINGS")
-        #print(spatial_returns.shape)
         return errors#, spatial_returns
 
 

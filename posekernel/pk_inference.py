@@ -1,4 +1,5 @@
 import sys
+import os
 sys.path.insert(0, '../datasets/')
 import numpy as np
 import matplotlib.pyplot as plt
@@ -16,8 +17,8 @@ if __name__ == "__main__":
 
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('name', type=str, help='Name of Dataset in human_rgbd')
-    parser.add_argument('--name2', type=str, help='Name of Posekernel Folder')
+    parser.add_argument('dataset_dir', type=str, help='Path to the Dataset folder, e.g. May18')
+    parser.add_argument('save_dir', type=str, help='Path to save to')
     parser.add_argument('--darkroom', action='store_true', default=False)
     parser.add_argument('--conference', action='store_true', default=False)
     parser.add_argument('--chris', action='store_true', default=False)
@@ -58,15 +59,16 @@ if __name__ == "__main__":
             mic_indices = [0]
 
             
-    test_indices = np.load("/viscam/projects/soundcam/baseline_files/test_indices.npy")
+    test_indices = np.load("/../indices/test_indices.npy")
 
-    c = np.load("/viscam/projects/soundcam/datasets/human_rgbd/"+args.name+"/preprocessed/centroid.npy")
+    c = np.load(os.path.join(args.dataset_dir,"/preprocessed/centroid.npy"))
 
     if args.no_test_indices:
         test_indices = np.arange(c.shape[0])
         
     c = c[test_indices, :]
-    pk_save_path = "/viscam/projects/soundcam/posekernels/" + args.name2 + "/ds_pose_kernels.npy"
+    pk_save_
+    pk_save_path = os.path.join(args.save_dir, "ds_pose_kernels.npy")
     
     print("Loading Pose Kernels")
     pks = np.load(pk_save_path, mmap_mode='r')[test_indices, :, :14400]
