@@ -2,7 +2,9 @@
 
 ### [Website](https://sites.google.com/view/soundcam) | [Dataset](https://purl.stanford.edu/xq364hd5023) | [Video](https://www.youtube.com/watch?v=HAhJLgj8maI) | [Paper]()
 
-[Mason Wang](https://www.linkedin.com/in/mason-wang-3b5288104/) | [Samuel Clarke](https://samuelpclarke.com/) | [Jui-Hsien Wang](http://juiwang.com/) | [Ruohan Gao](https://ruohangao.github.io/) | [Jiajun Wu](jiajunwu.com)
+[Mason Wang^1](https://www.linkedin.com/in/mason-wang-3b5288104/) | [Samuel Clarke^1](https://samuelpclarke.com/) | [Jui-Hsien Wang^2](http://juiwang.com/) | [Ruohan Gao^3](https://ruohangao.github.io/) | [Jiajun Wu^1](jiajunwu.com)
+
+^1Stanford, ^2Adobe, ^3Meta Reality Labs
 
 Here is an example command to run the VGGish baseline on the living room dataset, with all 10 microphones.
 
