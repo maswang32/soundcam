@@ -375,7 +375,7 @@ if __name__ == "__main__":
                 test_acc[i] = 0
             
 
-        print("GENREALIZE - Mean")
+        print("GENERALIZE - Mean")
         print(test_acc)
         print(np.mean(test_acc))
 

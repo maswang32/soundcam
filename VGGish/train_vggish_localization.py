@@ -114,13 +114,13 @@ if __name__ == "__main__":
 
     print(centroid.shape)
 
-    train_indices = np.load("indices/train_indices.npy")
+    train_indices = np.load("../indices/train_indices.npy")
 
     if args.num_train is not None:
         train_indices = np.random.choice(train_indices, args.num_train,replace=False)
 
-    valid_indices = np.load("indices/valid_indices.npy")
-    test_indices = np.load("indices/test_indices.npy")
+    valid_indices = np.load("../indices/valid_indices.npy")
+    test_indices = np.load("../indices/test_indices.npy")
 
     #Centroids
     train_xy = centroid[train_indices]
@@ -271,24 +271,17 @@ if __name__ == "__main__":
         for i in range(N_iter):
             curr_idx = rand_idx[i*args.batch_size:(i+1)*args.batch_size]
             net_out = net(train_waves[curr_idx, :])
-            #print("net out shape")
-            #print(net_out.shape)
             results = postprocess_net_output(net_out)
-            #print("results shape")
-            #print(results.shape)
             xy_loss = xy_loss_fn(results[:, :2], train_xy[curr_idx, :2])
             loss = xy_loss
             optimizer.zero_grad()
             loss.backward()
             train_loss = loss.item()
-            #print(train_loss)
             train_losses.append((step_count, train_loss))
             train_xy_losses.append((step_count, xy_loss.item()))
             step_count+=1
             optimizer.step()
             scheduler.step()
-        # print(results)
-        # print(train_meta[curr_idx, :2])
 
         net.eval()
         valid_loss_xy_arr = np.zeros(valid_waves.shape[0], dtype=np.float32)
