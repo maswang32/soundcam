@@ -5,7 +5,6 @@
 Code for running baseline experiments on the SoundCam Dataset.
 
 [Mason Wang<sup>1</sup>](https://www.linkedin.com/in/mason-wang-3b5288104/) | [Samuel Clarke<sup>1</sup>](https://samuelpclarke.com/) | [Jui-Hsien Wang<sup>2</sup>](http://juiwang.com/) | [Ruohan Gao<sup>3</sup>](https://ruohangao.github.io/) | [Jiajun Wu<sup>1</sup>](jiajunwu.com)
-
 <sup>1</sup>Stanford, <sup>2</sup>Adobe, <sup>3</sup>Meta Reality Labs
 
 NeurIPS Datasets and Benchmarks Poster 2023.
