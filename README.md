@@ -6,6 +6,8 @@
 
 <sup>1</sup>Stanford, <sup>2</sup>Adobe, <sup>3</sup>Meta Reality Labs
 
+NeurIPS Datasets and Benchmarks Poster 2023.
+
 Here is an example command to run the VGGish baseline on the living room dataset, with all 10 microphones.
 
 ```
