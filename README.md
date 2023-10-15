@@ -1,7 +1,7 @@
 # SoundCam: A Dataset for Finding Humans Using Room Acoustics
 This repository provides the code we used to run our the baselines described in the SoundCam paper. Please check out our website, where the dataset is hosted: https://sites.google.com/view/soundcam
 
-#[Website](https://sites.google.com/view/soundcam) | #[Paper]()
+# [Website](https://sites.google.com/view/soundcam) | [Paper]()
 
 
 
