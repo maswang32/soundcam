@@ -20,9 +20,8 @@ An example for loading the Treated Room dataset's Room Impulse Responses is show
 
 ## Organization
 
-
 ### indices
-The `indices` folder contains `.npy` files with train/valid/test splits for all of the tasks. `train_indices.npy`, `valid_indices.npy`, and `test_indices.npy`  contain numpy arrays of length 800, 100, and 100, respectively, and provide the indices of the intended training, validation, and test sets, respectively for the localization task. The `..._class.npy` and `..._binary.npy` files contain similar splits for the 5-way classification task and the binary detection task.
+The `indices` folder contains `.npy` files with train/valid/test splits for all of the tasks. `train_indices.npy`, `valid_indices.npy`, and `test_indices.npy`  contain numpy arrays of length 800, 100, and 100, respectively, and provide the indices of the intended training, validation, and test sets, respectively for the localization task. The `..._class.npy` and `..._binary.npy` files contain similar splits for the 5-way classification task and the binary detection task. An example for using these is in `examples.ipynb`
 
 ### VGGish
 This folder contains source code for running the VGGish-based baselines described in our paper. `train_vggish_class.py` should be used for the detection and identification tasks, while `train_vggish_localization` should be used for the localization task.
@@ -46,19 +45,27 @@ python train_vggish_localization.py <path to audio> <path to centroid.npy> --err
 ```
 An example of this is shown in `examples.ipynb`
 
-#### Detection/Classification
-In order to run the VGGish baselines for localization in Python, use the `train_vggish_class.py` file located in the VGGish folder. Run a command in this format:
+#### Classification
+In order to run the VGGish baselines for Classification in Python, use the `train_vggish_class.py` file located in the VGGish folder. Run a command in this format:
 
 ```
 python train_vggish_class.py <path to audio> /../indices/labels_class.npy --error_path <directory to save errors> --save_path <path to save model weights> --num_channels 10 --multi_chan --darkroom --num_categories 5 --train_indices /../indices/train_indices_class.npy --valid_indices /../indices/valid_indices_class.npy --test_indices /../indices/test_indices_class.npy
 ```
+An example of this is shown in `examples.ipynb`
 
 
-Here is an example to run binary detection using the pretrained VGGish with resampling:
+#### Detection
+In order to run the VGGish baselines for detection in Python, use the `train_vggish_class.py` file located in the VGGish folder. Run a command in this format:
 
 ```
 python train_vggish_class.py <path to audio> /../indices/labels_binary.npy --error_path <directory to save errors> --save_path <path to save model weights> --num_channels 10 --darkroom --num_categories 1 --pretrained --resample --train_indices  /../indices/train_indices_empty.npy --valid_indices /../indices/valid_indices_empty.npy --test_indices /../indices/test_indices_empty.npy --lr 0.0001 --empty_dir <path to audio from empty room>
 ```
+
+
+### Time-of-Arrival baseline
+
+An example for running the Time-of-Arrival baseline is shown
+
 
 ## Citation
 ```
