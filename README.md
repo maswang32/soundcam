@@ -66,7 +66,8 @@ This folder contains source code for running the time-of-arrival baseline on the
 ### datasets
 This folder contains information about each of the datasets collected, including speaker and microphone locations.
 
-
+## labels
+Labels for detection and classification tasks. Usage in `examples.ipynb`
 
 ## Citation
 ```
