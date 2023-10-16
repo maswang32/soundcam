@@ -1,11 +1,5 @@
-#This is May 5
 import numpy as np
-import dataset
-import roomsetup
 
-
-DATASET_PATH = #Insert the path to the dataset's preprocessed folder here!
-DATASET_PATH_OCCLUSIONS = #Insert the path to the Treated Room w/ occlusions preprocessed folder here!
 
 #Locations of Cone, Tweeter, Microphones, Centroid in mm
 speaker_bottom_left = np.array([-15.25, 4+15/16, 38.5])*25.4
@@ -45,31 +39,8 @@ walls = np.array([top_left, top_right, bottom_right, bottom_left, top_left])
 #Origin Location - NEED TO ADD
 camera_origin_xyz = np.array([4*feet-10,-5*feet+10,58+3/16])*25.4
 
-#Bounds
-#x_min = -1300
-#x_max = 3900
-#y_min = -4100
-#y_max = 1100
-
 #Wall Bounds
 x_min = top_left[0]
 x_max = top_right[0]
 y_min = bottom_right[1]
 y_max = top_right[1]
-
-
-dr_occlusions = dataset.Dataset(roomsetup.RoomSetup(speaker_xyz,
-                mic_xyzs_occlusions,
-                x_min,
-                x_max,
-                y_min,
-                y_max,
-                walls), DATASET_PATH_OCCLUSIONS)
-
-dr = dataset.Dataset(roomsetup.RoomSetup(speaker_xyz,
-                mic_xyzs_base,
-                x_min,
-                x_max,
-                y_min,
-                y_max,
-                walls), DATASET_PATH")

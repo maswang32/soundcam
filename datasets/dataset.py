@@ -1,8 +1,8 @@
-import roomsetup
+import datasets.roomsetup
 
 class Dataset(object):
     def __init__(self,
-                room_setup: roomsetup.RoomSetup,
+                room_setup: datasets.roomsetup.RoomSetup,
                 preprocess_dir: str
                 ):
         self.room_setup = room_setup

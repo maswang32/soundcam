@@ -1,8 +1,4 @@
 import numpy as np
-import dataset
-import roomsetup
-
-DATASET_PATH = #Insert the path to the dataset's preprocessed folder here!
 
 #Microphone Locations
 mic_height = 50.3125
@@ -43,10 +39,10 @@ x_max= 500
 y_min= -4000
 y_max= 2000
 
-cr = dataset.Dataset(roomsetup.RoomSetup(speaker_xyz,
-                mic_xyzs,
-                x_min,
-                x_max,
-                y_min,
-                y_max,
-                walls), DATASET_PATH)
+# cr = dataset.Dataset(roomsetup.RoomSetup(speaker_xyz,
+#                 mic_xyzs,
+#                 x_min,
+#                 x_max,
+#                 y_min,
+#                 y_max,
+#                 walls), DATASET_PATH)
