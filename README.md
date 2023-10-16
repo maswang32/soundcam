@@ -21,7 +21,7 @@ An example for loading the Treated Room dataset's Room Impulse Responses is show
 
 ## Running Baselines on the SoundCam Dataset
 
-Examples for running each baseline are in `examples.ipnyb'. By filling in the path to your downloaded dataset, you can run the VGGish baselines for localization, detection, and identification. You can also run the Time-of-Arrival baseline for localization. Example commands are printed in this document
+Examples for running each baseline are in `examples.ipynb`. By filling in the path to your downloaded dataset, you can run the VGGish baselines for localization, detection, and identification. You can also run the Time-of-Arrival baseline for localization. Example commands are printed in this document
 
 #### Localization
 In order to run the VGGish baselines for localization in Python, use the `train_vggish_localization.py` file located in the VGGish folder. Run a command in this format:
