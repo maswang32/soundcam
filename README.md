@@ -38,14 +38,16 @@ This folder contains information about each of the datasets collected, including
 
 ### VGGish baselines
 
-In order to run the VGGish baselines in Python, run a command in this format:
+#### Localization
+In order to run the VGGish baselines for localization in Python, use the `train_vggish_localization.py` file located in the VGGish folder. Run a command in this format:
 
 ```
 python train_vggish_localization.py <path to audio> <path to centroid.npy> --error_path <directory to save errors> --save_path <path to save model weights> --num_channels 10 --multi_chan --living
 ```
 An example of this is shown in `examples.ipynb`
 
-Here is an example command to run person identification:
+#### Detection/Classification
+In order to run the VGGish baselines for localization in Python, use the `train_vggish_class.py` file located in the VGGish folder. Run a command in this format:
 
 ```
 python train_vggish_class.py <path to audio> /../indices/labels_class.npy --error_path <directory to save errors> --save_path <path to save model weights> --num_channels 10 --multi_chan --darkroom --num_categories 5 --train_indices /../indices/train_indices_class.npy --valid_indices /../indices/valid_indices_class.npy --test_indices /../indices/test_indices_class.npy
