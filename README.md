@@ -16,7 +16,7 @@ Simply go to the directory you would like to download the dataset in, and run `.
 
 ## Loading our Dataset
 
-An example for loading the Treated Room dataset's Room Impulse Responses is shown in loading_data_examples.ipynb. The file also provides an example for loading training data.
+An example for loading the Treated Room dataset's Room Impulse Responses is shown in `examples.ipynb`. The file also provides an example for loading training data.
 
 ## Organization
 
@@ -36,12 +36,14 @@ This folder contains information about each of the datasets collected, including
 
 ## Running Baselines on the SoundCam Dataset
 
+### VGGish baselines
 
-Here is an example command to run the VGGish baseline on the living room dataset, with all 10 microphones.
+In order to run the VGGish baselines in Python, run a command in this format:
 
 ```
 python train_vggish_localization.py <path to audio> <path to centroid.npy> --error_path <directory to save errors> --save_path <path to save model weights> --num_channels 10 --multi_chan --living
 ```
+An example of this is shown in `examples.ipynb`
 
 Here is an example command to run person identification:
 
