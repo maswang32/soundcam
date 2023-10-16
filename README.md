@@ -50,7 +50,7 @@ python train_vggish_class.py <path to audio> /../indices/labels_binary.npy --err
 
 ### Time-of-Arrival baseline
 
-An example for running the Time-of-Arrival baseline is shown
+An example for running the Time-of-Arrival baseline is shown in `examples.ipynb`
 
 ## Organization
 
