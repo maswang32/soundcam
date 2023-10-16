@@ -1,20 +1,11 @@
 import argparse
-import glob
 import os
-from pathlib import Path
 import random
 import sys
-
-import IPython
 import numpy as np
-from scipy.spatial.transform import Rotation
-import soundfile as sf
 import torch
 import torchaudio.functional as F
-
 import config
-sys.path.insert(0, str(config.LIBS_DIR.joinpath("RotationContinuity/sanity_test/code")))
-import tools
 import models
 
 
@@ -22,8 +13,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Compute VGGish features for input path')
     parser.add_argument('audio_dir', help='File pattern for audio file')
     parser.add_argument('centroid_dir', help='File pattern for centroid file')
-    parser.add_argument('--error_path', help='File pattern for saving errors')
-    parser.add_argument('--save_path', help='Path for saving model state')
+    parser.add_argument('--error_path', help='File pattern for saving errors', default="errors")
+    parser.add_argument('--save_path', help='Path for saving model state', default="model.pt")
     parser.add_argument('--seed', type=int, default=1337, help='Random seed')
     parser.add_argument('--batch_size', type=int, default=32, help='Size of batches')
     parser.add_argument('--num_epochs', type=int, default=1000, help='Number of batch iterations')
@@ -49,7 +40,7 @@ if __name__ == "__main__":
     parser.add_argument('--silence', action='store_true', help='If we testing it out on silence')
 
     #More arguments
-    parser.add_argument('--darkroom', action='store_true', help='dr', default=False)
+    parser.add_argument('--treated', action='store_true', help='using treated room', default=False)
     parser.add_argument('--living', action='store_true', help='living')
     parser.add_argument('--conference', action='store_true', help='conference')
 
@@ -77,7 +68,7 @@ if __name__ == "__main__":
         centroid = centroid[mask, ...]
     
     if args.num_channels < 10:
-        if args.darkroom:
+        if args.treated:
             if args.num_channels == 4:
                 mic_indices = [0, 5, 6, 9]
             if args.num_channels == 2:

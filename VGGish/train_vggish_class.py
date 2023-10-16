@@ -1,20 +1,11 @@
 import argparse
-import glob
 import os
-from pathlib import Path
 import random
 import sys
-
-import IPython
 import numpy as np
-from scipy.spatial.transform import Rotation
-import soundfile as sf
 import torch
 import torchaudio.functional as F
-
 import config
-sys.path.insert(0, str(config.LIBS_DIR.joinpath("RotationContinuity/sanity_test/code")))
-import tools
 import models
 
 
@@ -22,16 +13,14 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Compute VGGish features for input path')
     parser.add_argument('audio_dir', help='File pattern for audio file')
     parser.add_argument('labels_dir', help='File pattern for labels')
-    parser.add_argument('--error_path', help='File pattern for saving errors')
-    parser.add_argument('--save_path', default='/sensei-fs/users/sclarke/soundcam/models/regression2dof.pt', help='Path for saving model state')
+    parser.add_argument('--error_path', help='File pattern for saving errors',default="errors")
+    parser.add_argument('--save_path', default='mode.pt', help='Path for saving model state')
     parser.add_argument('--seed', type=int, default=1337, help='Random seed')
     parser.add_argument('--batch_size', type=int, default=32, help='Size of batches')
     parser.add_argument('--num_epochs', type=int, default=1000, help='Number of batch iterations')
     parser.add_argument('--pretrained', action='store_true', help='Use pretrained VGGish weights')
     parser.add_argument('--no_pretrained', dest='pretrained', action='store_false', help='Do not use pretrained VGGish weights')
     parser.set_defaults(pretrained=False)
-    parser.add_argument('--wavelet', action='store_true', help='Use Wavelet architecture')
-    parser.set_defaults(wavelet=False)
     parser.add_argument('--resnet1d', action='store_true', help='Use ResNet1D architecture')
     parser.set_defaults(resnet1d=False)
     parser.add_argument('--complex_vggish', action='store_true', help='Use VGGish architecture with complex spectrogram input')
@@ -50,7 +39,7 @@ if __name__ == "__main__":
     parser.add_argument('--silence', action='store_true', help='If we testing it out on silence')
 
     #Extra arguments
-    parser.add_argument('--darkroom', action='store_true', help='dr', default=False)
+    parser.add_argument('--treated', action='store_true', help='dr', default=False)
     parser.add_argument('--livingroom', action='store_true', help='livingroom')
     parser.add_argument('--conference', action='store_true', help='conference')
 
@@ -82,7 +71,7 @@ if __name__ == "__main__":
     labels = torch.Tensor(labels).cuda()
 
     if args.num_channels < 10:
-        if args.darkroom:
+        if args.treated:
             if args.num_channels == 4:
                 mic_indices = [0, 5, 6, 9]
             if args.num_channels == 2:
@@ -112,7 +101,6 @@ if __name__ == "__main__":
 
     deconv = deconv[:, mic_indices, :]
 
-    print("here")
 
 
     if args.num_categories > 1:
@@ -201,7 +189,7 @@ if __name__ == "__main__":
         valid_waves = resample(valid_waves)
         test_waves = resample(test_waves)
 
-    vggish_cutoff = config.N_STEPS if (args.resnet1d or args.complex_vggish or args.wavelet) else 30950
+    vggish_cutoff = config.N_STEPS if (args.resnet1d or args.complex_vggish) else 30950
     
     if args.multi_chan:
         vggish_cutoff = 15475
@@ -226,13 +214,6 @@ if __name__ == "__main__":
         print('Using VGGish-based model with complex inputs')
 
 
-    elif args.wavelet:
-        clip_value = 14 if args.normalized else None
-        in_channels = None
-        if args.num_channels > 1:
-            in_channels = int((3 if args.normalized else 2) * args.num_channels)
-        net = models.CustomVGGish(in_channels=in_channels, out_channels=out_channels, normalized=args.normalized, clip_value=clip_value)
-        print('Using WaveletVGGish-based model with complex inputs')
     elif args.multi_chan:
         net = models.CustomVGGish2(in_channels=args.num_channels, out_channels=out_channels)
 

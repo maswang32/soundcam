@@ -15,11 +15,7 @@ from resnet1d import ResNet1D
 
 
 #Wavelet stuff
-from pytorch_wavelets import DWTForward
-#from wavelets_pytorch.transform import WaveletTransformTorch 
 from scipy import signal
-import pywt
-import morlwavelet
 
 
 # TODO(sclarke): This was just copied from the hubconf file in the original repo, this should use an external reference.
@@ -242,65 +238,3 @@ class CustomVGGish2(VGG):
             #print(x.size())
 
         return x
-
-            
-
-
-
-
-# class CustomVGGishWavelet(CustomVGGish):
-#     def __init__(self, n_fft=256, hop_length=64, window_length=192, in_channels=None, out_channels=2, p_dropout=0.0, normalized=False, clip_value=None, device=None):
-#         super().__init__(n_fft, hop_length, window_length, in_channels, out_channels, p_dropout, normalized, clip_value, device)
-#     def _preprocess(self, x):
-#         if isinstance(x, np.ndarray) or isinstance(x, torch.Tensor):
-#             reshape = False
-#             original_size = x.size()
-#             if x.dim() > 2:
-#                 x = x.view(-1, x.size()[-1])
-#                 reshape = True
-            
-
-#             #xfm = DWTForward(J=3, mode='zero', wave='db3')
-#             #print(x.size())
-#             #x= xfm(x)
-#             #x = torch.stack(xL, xH)
-
-#             #x = x.cpu().detach().numpy()
-#             #widths = np.arange(1, 130)
-#             #cwtmatr, freqs = pywt.cwt(x, widths, 'morl')
-#             #x = cwtmatr
-#             #print(x.shape)
-#             #x = torch.from_numpy(x)
-#             #x = x.cuda()
-
-
-#             pycwt = morlwavelet.CWT(dt=1/48000, dj=0.036, hop_length=64)
-#             x = torch.unsqueeze(x, 1)
-#             print(x.shape)
-#             x = pycwt(x)
-#             x = torch.squeeze(x)
-#             del pycwt
-#             #wavelets = pywt.wavedec(x, 'db8', level=128)
-#             #torch_list = [torch.from_numpy(w)[:,:15] for w in wavelets]
-#             #x = torch.stack(torch_list, axis=1)
-    
-#             print("X SIZE " + str(x.size()))
-
-#             if self.normalized:
-#                 mag = torch.abs(x)
-#                 if self.clip_value:
-#                     mag = torch.clamp(mag, max=self.clip_value) / self.clip_value
-#                 angle = torch.angle(x)
-#                 x = torch.stack((mag, torch.sin(angle), torch.cos(angle)), dim=1)
-#             else:
-#                 x = torch.transpose(x, 1, 3)
-#             if reshape:
-#                 #x = x.view(original_size[0], original_size[1]*x.size()[1], x.size()[2], x.size()[3])
-#                 print("orig siez")
-#                 print(original_size)
-#                 x = x.view(original_size[0], original_size[1]*x.size()[1], x.size()[2], x.size()[3])
-
-#         else:
-#             raise AttributeError
-#         print("RET " + str(x.shape))
-#         return x

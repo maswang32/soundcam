@@ -1,6 +1,5 @@
 import numpy as np
 
-
 #Locations of Cone, Tweeter, Microphones, Centroid in mm
 speaker_bottom_left = np.array([-15.25, 4+15/16, 38.5])*25.4
 speaker_bottom_right = np.array([-10.75, 8+7/8, 38.5])*25.4

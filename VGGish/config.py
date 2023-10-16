@@ -2,8 +2,7 @@ import getpass
 import os
 from pathlib import Path
 
-#SOUNDCAM_DIR = Path(os.path.join('')
-LIBS_DIR = Path('external')
+LIBS_DIR = Path(os.path.join(os.getcwd(),'external'))
 
 GRID_LENGTH = 200
 GRID_CELL_SIZE = 0.01

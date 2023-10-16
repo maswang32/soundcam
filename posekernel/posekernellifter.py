@@ -10,15 +10,11 @@ import sys
 sys.path.insert(0, '../datasets/')
 import dataset
 import roomsetup
-import darkrooms
-
-
-
-#Change this if we're using a different room
-room = darkrooms.dr.room_setup
 
 
 fs = 48000
+
+#Change if using a different room
 
 
 def compute_pk_new(e_rirs, f_rirs, envelope_size = 10, smooth=True, direct=False):
@@ -192,10 +188,54 @@ if __name__ == "__main__":
     parser.add_argument('--stage', type=int, help='If there has already been preprocessing', default=0)
     parser.add_argument('--subtract_direct', action='store_true', default=False)
     parser.add_argument('--prefix', type=str, help='prefix', default='')
+    parser.add_argument('--treated', action='store_true', default=False)
+    parser.add_argument('--living', action='store_true', default=False)
+    parser.add_argument('--conference', action='store_true', default=False)
+    parser.add_argument('--dataset_path', help="Path to Dataset")
 
     args = parser.parse_args()
 
+
+    if not os.path.exists(args.save_dir):
+        os.mkdir(args.save_dir)
+
+
     #Load the Room
+    if args.treated:
+        import treatedroom
+        ds = dataset.Dataset(roomsetup.RoomSetup(treatedroom.speaker_xyz,
+                        treatedroom.mic_xyzs_base,
+                        treatedroom.x_min,
+                        treatedroom.x_max,
+                        treatedroom.y_min,
+                        treatedroom.y_max,
+                        treatedroom.walls), args.dataset_path)
+        room = ds.room_setup
+        
+    elif args.living:
+        import livingroom
+        ds = dataset.Dataset(roomsetup.RoomSetup(livingroom.speaker_xyz,
+                livingroom.mic_xyzs,
+                livingroom.x_min,
+                livingroom.x_max,
+                livingroom.y_min,
+                livingroom.y_max,
+                livingroom.walls),  args.dataset_path)
+        room = ds.room_setup
+
+        
+    elif args.conference:
+        import conference
+        ds = dataset.Dataset(roomsetup.RoomSetup(conference.speaker_xyz,
+                conference.mic_xyzs,
+                conference.x_min,
+                conference.x_max,
+                conference.y_min,
+                conference.y_max,
+                conference.walls),  args.dataset_path)
+        room = ds.room_setup
+
+
     pkl = PoseKernelLifter(room, 101, 101)
 
     if args.stage<1:
