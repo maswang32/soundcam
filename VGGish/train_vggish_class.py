@@ -18,8 +18,6 @@ import tools
 import models
 
 
-
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Compute VGGish features for input path')
     parser.add_argument('audio_dir', help='File pattern for audio file')
@@ -53,7 +51,7 @@ if __name__ == "__main__":
 
     #Extra arguments
     parser.add_argument('--darkroom', action='store_true', help='dr', default=False)
-    parser.add_argument('--chris', action='store_true', help='chris')
+    parser.add_argument('--livingroom', action='store_true', help='livingroom')
     parser.add_argument('--conference', action='store_true', help='conference')
 
     #Generalize Path
@@ -83,7 +81,6 @@ if __name__ == "__main__":
     print("Labels Loaded")
     labels = torch.Tensor(labels).cuda()
 
-
     if args.num_channels < 10:
         if args.darkroom:
             if args.num_channels == 4:
@@ -101,7 +98,7 @@ if __name__ == "__main__":
             if args.num_channels == 1:
                 mic_indices = [1]
 
-        elif args.chris:
+        elif args.livingroom:
             if args.num_channels == 4:
                 mic_indices = [8, 0, 5, 3]
             if args.num_channels == 2:
@@ -148,15 +145,12 @@ if __name__ == "__main__":
         sm = torch.nn.Sigmoid()
 
     def postprocess_net_output(output):
-        #print(output)
         
         if args.num_categories > 1:
             output[..., :args.num_categories] = sm(output[..., :args.num_categories])
         else:
             output[..., :args.num_categories] = sm(50*output[..., :args.num_categories])
-
-
-
+            
         return output
     
 
@@ -299,8 +293,6 @@ if __name__ == "__main__":
 
         for i in range(test_waves.shape[0]):
             with torch.no_grad():
-                #print("BROSHAPE")
-                #print(net(torch.unsqueeze(test_waves[i, :], axis=0)).shape)
                 results = torch.squeeze(postprocess_net_output(net(torch.unsqueeze(test_waves[i, :], axis=0))))
             
 
@@ -308,7 +300,6 @@ if __name__ == "__main__":
                 prediction = torch.argmax(results)
                 ground_truth = torch.argmax(test_labels[i])
             else:
-                #print(results)
                 prediction = torch.round(results).item()
                 ground_truth = test_labels[i]
 
