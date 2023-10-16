@@ -14,7 +14,24 @@ NeurIPS Datasets and Benchmarks Poster 2023.
 
 Simply go to the directory you would like to download the dataset in, and run `./download.sh`. The dataset is also available for download [here](https://purl.stanford.edu/xq364hd5023).
 
+## Organization
+
+
+### indices
+The `indices` folder contains `.npy` files with train/valid/test splits for all of the tasks. `train_indices.npy`, `valid_indices.npy`, and `test_indices.npy`  contain numpy arrays of length 800, 100, and 100, respectively, and provide the indices of the intended training, validation, and test sets, respectively for the localization task. The `..._class.npy` and `..._binary.npy` files contain similar splits for the 5-way classification task and the binary detection task.
+
+### VGGish
+This folder contains source code for running the VGGish-based baselines described in our paper. `train_vggish_class.py` should be used for the detection and identification tasks, while `train_vggish_localization` should be used for the localization task.
+
+### posekernel
+This folder contains source code for running the time-of-arrival baseline on the localization task. `posekernellifter.py` precomputes a set of spatial encodings for this task, and `pk_inference` is used to use these spatial encodings to predict the person's location.
+
+### datasets
+This folder contains information about each of the datasets collected, including speaker and microphone locations.
+
+
 ## Running Baselines on the SoundCam Dataset
+
 
 Here is an example command to run the VGGish baseline on the living room dataset, with all 10 microphones.
 
