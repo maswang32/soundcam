@@ -16,7 +16,7 @@ Simply go to the directory you would like to download the dataset in, and run `.
 
 ## Loading our Dataset
 
-An example for loading the Treated Room dataset's Room Impulse Responses is shown in loading_data_examples.ipynb.
+An example for loading the Treated Room dataset's Room Impulse Responses is shown in loading_data_examples.ipynb. The file also provides an example for loading training data.
 
 ## Organization
 
