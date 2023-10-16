@@ -67,7 +67,6 @@ if __name__ == "__main__":
         test_indices = np.arange(c.shape[0])
         
     c = c[test_indices, :]
-    pk_save_
     pk_save_path = os.path.join(args.save_dir, "ds_pose_kernels.npy")
     
     print("Loading Pose Kernels")
