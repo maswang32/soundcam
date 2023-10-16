@@ -2,7 +2,7 @@
 
 ### [Website](https://sites.google.com/view/soundcam) | [Dataset](https://purl.stanford.edu/xq364hd5023) | [Video](https://www.youtube.com/watch?v=HAhJLgj8maI) | [Paper]()
 
-Code for running baseline experiments on the SoundCam Dataset.
+Code providing examples for loading and running experiments on the SoundCam Dataset.
 
 [Mason Wang<sup>1</sup>](https://www.linkedin.com/in/mason-wang-3b5288104/) | [Samuel Clarke<sup>1</sup>](https://samuelpclarke.com/) | [Jui-Hsien Wang<sup>2</sup>](http://juiwang.com/) | [Ruohan Gao<sup>3</sup>](https://ruohangao.github.io/) | [Jiajun Wu<sup>1</sup>](jiajunwu.com)
 
@@ -13,6 +13,10 @@ NeurIPS Datasets and Benchmarks Poster 2023.
 ## Downloading our Dataset
 
 Simply go to the directory you would like to download the dataset in, and run `./download.sh`. The dataset is also available for download [here](https://purl.stanford.edu/xq364hd5023).
+
+## Loading our Dataset
+
+An example for loading the Treated Room dataset's Room Impulse Responses is shown in loading_data_examples.ipynb.
 
 ## Organization
 
