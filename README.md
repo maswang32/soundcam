@@ -35,37 +35,7 @@ This folder contains information about each of the datasets collected, including
 
 ## Running Baselines on the SoundCam Dataset
 
-### VGGish baselines
-
-#### Localization
-In order to run the VGGish baselines for localization in Python, use the `train_vggish_localization.py` file located in the VGGish folder. Run a command in this format:
-
-```
-python train_vggish_localization.py <path to audio> <path to centroid.npy> --error_path <directory to save errors> --save_path <path to save model weights> --num_channels 10 --multi_chan --living
-```
-An example of this is shown in `examples.ipynb`
-
-#### Classification
-In order to run the VGGish baselines for Classification in Python, use the `train_vggish_class.py` file located in the VGGish folder. Run a command in this format:
-
-```
-python train_vggish_class.py <path to audio> /../indices/labels_class.npy --error_path <directory to save errors> --save_path <path to save model weights> --num_channels 10 --multi_chan --darkroom --num_categories 5 --train_indices /../indices/train_indices_class.npy --valid_indices /../indices/valid_indices_class.npy --test_indices /../indices/test_indices_class.npy
-```
-An example of this is shown in `examples.ipynb`
-
-
-#### Detection
-In order to run the VGGish baselines for detection in Python, use the `train_vggish_class.py` file located in the VGGish folder. Run a command in this format:
-
-```
-python train_vggish_class.py <path to audio> /../indices/labels_binary.npy --error_path <directory to save errors> --save_path <path to save model weights> --num_channels 10 --darkroom --num_categories 1 --pretrained --resample --train_indices  /../indices/train_indices_empty.npy --valid_indices /../indices/valid_indices_empty.npy --test_indices /../indices/test_indices_empty.npy --lr 0.0001 --empty_dir <path to audio from empty room>
-```
-
-
-### Time-of-Arrival baseline
-
-An example for running the Time-of-Arrival baseline is shown
-
+Examples for running each baseline are in `examples.ipnyb'. By filling in the path to your downloaded dataset, you can run the VGGish baselines for localization, detection, and identification. You can also run the Time-of-Arrival baseline for localization. Example commands are printed in this document
 
 ## Citation
 ```
