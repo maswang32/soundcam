@@ -18,6 +18,10 @@ Simply go to the directory you would like to download the dataset in, and run `.
 
 An example for loading the Treated Room dataset's Room Impulse Responses is shown in `examples.ipynb`. The file also provides an example for loading training data.
 
+For browsing and prototyping, a minimal subset of the data can be downloaded [here])(https://drive.google.com/uc?export=download&id=1s7UDxUkaASWDuEWQrUDA6p_7COIofaOi).
+
+
+
 
 ## Running Baselines on the SoundCam Dataset
 
